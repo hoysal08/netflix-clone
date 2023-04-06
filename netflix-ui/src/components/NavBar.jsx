@@ -88,7 +88,7 @@ const Container = styled.div`
         z-index:2;
         padding:0 4rem;
         align-items:center;
-        transistion:0.3s ease-in-out;
+        transition:0.3s ease-in-out;
         .left{
             gap:2rem;
             .brand{

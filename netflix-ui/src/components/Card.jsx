@@ -9,7 +9,7 @@ import {AiOutlinePlus} from "react-icons/ai"
 import {BiChevronDown} from "react-icons/bi"
 
 
-function Card({movieData,isliked=false}) {
+export default React.memo (function Card({movieData,isliked=false}) {
     const [isHovered,setIsHovered]=useState(false);
 
     const navigate=useNavigate();
@@ -57,14 +57,14 @@ function Card({movieData,isliked=false}) {
         }
     </Container>
   )
-}
+})
 
 const Container =styled.div`
 max-width:230px;
 width:230px;
 height:100%;
 cursor:pointer;
-position:relative;
+position:relative; 
 img{
     border-radius:0.2rem;
     width:100%;
@@ -72,7 +72,7 @@ img{
     z-index:10;
 }
 .hover{
-    z-index:90;
+    z-index:99;
     height:max-content;
     width:20rem;
     position:absolute;
@@ -137,4 +137,3 @@ img{
 }
 `;
 
-export default Card

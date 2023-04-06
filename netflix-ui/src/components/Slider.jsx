@@ -1,7 +1,7 @@
 import React from 'react'
 import CardSlider from './CardSlider';
 
-function Slider({movies}) {
+export default React.memo( function Slider({movies}) {
 
     const getMoviesFromRange=(from,to)=>{
         return movies.slice(from,to);
@@ -16,6 +16,5 @@ function Slider({movies}) {
         <CardSlider title="Epics" data={getMoviesFromRange(50,60)} />
     </div>
   )
-}
+})
 
-export default Slider

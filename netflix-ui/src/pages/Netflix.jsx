@@ -91,7 +91,7 @@ const Container=styled.div`
         padding-right:2.4rem;
         border:none;
         cursor:pointer;
-        transistion:0.3s ease-inout;
+        transition:0.3s ease-inout;
         &:hover{
           opacity:0.8;
         }
