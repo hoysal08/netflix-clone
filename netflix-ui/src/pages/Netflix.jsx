@@ -30,9 +30,8 @@ function Netflix() {
 
   useEffect(()=>{
     if(genresLoaded) dispatch(fetchMovies({type:"all"}))
-  });
+  },[genresLoaded]);
 
-  // console.log(movies);
 
   return (
     <Container>

@@ -37,10 +37,10 @@ function NavBar({isScrolled}) {
                 </div>
                 <ul className="links flex">
                     {
-                    links.map(({name,link})=>{
+                    links.map(({name,links})=>{
                         return(
                             <li key={name}>
-                                <Link to={link}>{name}</Link>
+                                <Link to={links}>{name}</Link>
                             </li>
                         )
                     })
