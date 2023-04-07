@@ -7,12 +7,35 @@ import {RiThumbUpFill,RiThumbDownFill} from "react-icons/ri"
 import {BsCheck} from "react-icons/bs"
 import {AiOutlinePlus} from "react-icons/ai"
 import {BiChevronDown} from "react-icons/bi"
+import { onAuthStateChanged } from 'firebase/auth';
+import { FirebaseAuth } from '../utils/firebase-config';
+import axios from "axios"
+import { useDispatch } from 'react-redux';
+import {removeFromLikedMovies} from "../store/index"
 
 
 export default React.memo (function Card({movieData,isliked=false}) {
+   
+   
     const [isHovered,setIsHovered]=useState(false);
-
+    const[email,setEmail]=useState(undefined);
+    
+    const dispatch=useDispatch()
     const navigate=useNavigate();
+
+    onAuthStateChanged(FirebaseAuth,(currentUser)=>{
+        if(currentUser) setEmail(currentUser.email);
+        else navigate("/login")
+      });
+
+      const addToList=async()=>{
+        try{
+      await axios.post("http://localhost:5000/api/user/add",{email,data:movieData})
+        }
+        catch(err){
+            console.log(err)
+        }
+      }
     return (
     <Container onMouseEnter={()=>setIsHovered(true)} onMouseLeave={()=>setIsHovered(false)}>
         <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`} alt="movie"/>
@@ -38,7 +61,9 @@ export default React.memo (function Card({movieData,isliked=false}) {
                                 <RiThumbDownFill title="Dislike" />
                                 {
                                     isliked?(
-                                        <BsCheck title="Remove From List"/>):(<AiOutlinePlus title="Add to my list" />)
+                                        <BsCheck title="Remove From List" onClick={()=>{ dispatch(removeFromLikedMovies({movieId:movieData.id,email}))}}/>)
+                                        :
+                                        (<AiOutlinePlus title="Add to my list" onClick={addToList} />)
                                 }
                              </div>
                              <div className="info">

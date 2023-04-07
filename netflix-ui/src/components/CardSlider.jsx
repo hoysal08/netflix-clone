@@ -20,7 +20,7 @@ export default React.memo (function CardSlider({data,title}) {
       listRef.current.style.transform= `translateX(${-230+distance}px)`;
       setSliderPosition(sliderPosition+1)
     }
-    console.log(sliderPosition)
+
    };
 
   return (
