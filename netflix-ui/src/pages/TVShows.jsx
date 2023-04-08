@@ -20,7 +20,7 @@ function TVShows() {
   window.onscroll=()=>{
     setIsScrolled(window.pageYOffset === 0 ? false: true);
     return ()=>(window.onscroll=null);
-  }
+}
   
   const genresLoaded=useSelector((state)=>state.netflix.genresLoaded);
   const genres=useSelector((state)=>state.netflix.genres);
@@ -48,7 +48,7 @@ function TVShows() {
        <div className="data">
        <SelectGenre genres={genres} type="movie"/>
         {
-            movies.length?<Slider movies={movies}/>: <NotAvailable/>
+            movies?.length?<Slider movies={movies}/>: <NotAvailable/>
         }
        </div>
     </Container>

@@ -12,6 +12,7 @@ import { FirebaseAuth } from '../utils/firebase-config';
 import axios from "axios"
 import { useDispatch } from 'react-redux';
 import {removeFromLikedMovies} from "../store/index"
+import { NODEJS_LINK } from '../utils/constants';
 
 
 export default React.memo (function Card({movieData,isliked=false}) {
@@ -30,7 +31,7 @@ export default React.memo (function Card({movieData,isliked=false}) {
 
       const addToList=async()=>{
         try{
-      await axios.post("http://localhost:5000/api/user/add",{email,data:movieData})
+      await axios.post(`${NODEJS_LINK}/api/user/add`,{email,data:movieData})
         }
         catch(err){
             console.log(err)
@@ -71,7 +72,7 @@ export default React.memo (function Card({movieData,isliked=false}) {
                              </div> 
                         </div>
                         <div className="genres flex">
-                            <ul className='flex'>{movieData.genres.map((genre)=>(
+                            <ul className='flex'>{movieData?.genres?.map((genre)=>(
                                    <li key={genre}>{genre}</li>
                             ))}</ul>
                         </div>

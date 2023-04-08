@@ -29,15 +29,23 @@ function UserLiked() {
   
     useEffect(()=>{
       if(email){
+
         dispatch(getUserLikedMovies(email));
+        
       }
     },[email]);
+
+
   
     onAuthStateChanged(FirebaseAuth,(currentUser)=>{
-        if(currentUser) setEmail(currentUser.email);
+        if(currentUser) 
+        {
+          // dispatch(getUserLikedMovies(email));
+          setEmail(currentUser.email);
+        }
         else navigate("/login");
     });            
-
+    
 
   return (
    <Container>
@@ -46,7 +54,7 @@ function UserLiked() {
       <h1>My list</h1>
       <div className='grid flex' >
        {
-        movies.map((movie,index)=>{
+        movies?.map((movie,index)=>{
             return <Card movieData={movie} index={index} key={movie.id} isliked={true}/>
         })
        }

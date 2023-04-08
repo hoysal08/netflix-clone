@@ -10,7 +10,7 @@ function SelectGenre({genres,type}) {
         dispatch(fetchDatabygenre({genre:e.target.value,type}))
 
     }}>
-        {genres.map((genre)=>{
+        {genres?.map((genre)=>{
             return <option value={genre.id} key={genre.id}>{genre.name}</option>
         })}
     </Select>
