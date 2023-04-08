@@ -45,6 +45,7 @@ function UserLiked() {
         }
         else navigate("/login");
     });            
+
     
 
   return (
@@ -60,7 +61,7 @@ function UserLiked() {
 
       }
       {
-      (movies===undefined)&& (<NotAvailable/>)
+      (movies===undefined || movies?.length <1) && (<NotAvailable/>)
       }
       </div>
     </div>
