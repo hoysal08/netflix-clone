@@ -60,7 +60,7 @@ function UserLiked() {
 
       }
       {
-      movies.length===0 && (<NotAvailable/>)
+      (movies===undefined)&& (<NotAvailable/>)
       }
       </div>
     </div>

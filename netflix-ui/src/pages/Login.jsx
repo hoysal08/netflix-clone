@@ -19,6 +19,7 @@ function Login() {
       
     }
     catch(err){
+      alert("Incorrect email or password")
       console.log(err)
     }
   }

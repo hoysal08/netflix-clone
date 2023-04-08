@@ -16,8 +16,12 @@ function Signup() {
   const navigate=useNavigate();
 
   const handleSignIn=async()=>{
+
     try{
       const {email,password} = formValues;
+      if(password.length<6){
+        alert("Minimum password must be at least 6 characters")
+      }
       await createUserWithEmailAndPassword(FirebaseAuth,email,password);
       
     }
