@@ -57,7 +57,11 @@ function UserLiked() {
         movies?.map((movie,index)=>{
             return <Card movieData={movie} index={index} key={movie.id} isliked={true}/>
         })
-       }
+
+      }
+      {
+      movies.length===0 && (<NotAvailable/>)
+      }
       </div>
     </div>
    </Container>
